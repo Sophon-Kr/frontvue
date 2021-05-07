@@ -70,6 +70,7 @@
             </router-link>
         
     </form>
+  </div>
 
 </template>
 <script>
@@ -105,7 +106,7 @@ export default {
                 facebook : this.User.facebook,
                 imageurl : this.User.imageurl
             }
-            axios.post('http://localhost:5000/users/'+this.$route.params.userId, newUser)
+            axios.post('https://contact3142.herokuapp.com/users/'+this.$route.params.userId, newUser)
                 .then((response)=>{
                     console.log(response)
                 })
@@ -115,7 +116,7 @@ export default {
         }
     },
     mounted() {
-        axios.get('http://localhost:5000/users/'+this.$route.params.userId)
+        axios.get('https://contact3142.herokuapp.com/users/'+this.$route.params.userId)
             .then((response)=>{
                 //console.log(response.data)
                 this.User = response.data

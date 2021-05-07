@@ -31,7 +31,7 @@
 
         <div class="card" v-for="user_alias in filterUsers" v-bind:key="user_alias.id">
           <div class="image">
-            <img src= user_alias.imageurl >
+            <img v-bind:src= "user_alias.imageurl" >
           </div>
                 <div class="content">
                   <div class="header">
@@ -62,41 +62,6 @@
                       
                 </div>
                 </div>
-
-
-
-       <!--  <table class="table table-stripped table-borderes">
-            <thead>
-                <tr>
-                <th class="center">First Name</th>
-                <th class="center">Last Name</th>
-                <th class="center">Email</th>
-                <th class="center">Action</th>
-                </tr>
-            </thead>
-            <tbody> -->
-                <!-- <tr v-for="user_alias in filterUsers" v-bind:key="user_alias.id"> -->
-                <!-- <tr v-for="user_alias in filterUsers" v-bind:key="user_alias.id">
-                    <td class="text-left">{{ user_alias.firstName }}</td>
-                    <td class="text-left">{{ user_alias.lastName }}</td>
-                    <td class="text-left">{{ user_alias.email }}</td>
-                    <td class="text-left">
-                        <router-link :to="{ path: 'updateuser', name: 'UpdateUser', params:{userId: user_alias._id} }">
-                          <button class ="btn btn-xs btn-warning">Edit</button>&nbsp;
-                        </router-link>   
-                         <router-link to="/">
-                         <button class="btn btn-xs btn-danger" data-toggle="modal" data-target=".bd-example-modal-sm" @click="DELETE(user_alias._id)"><span class="glyphicon glyphicon-trash">Delete</span></button> -->
-                          <!-- <button class="btn btn-xs btn-danger" data-toggle="modal" data-target=".bd-example-modal-sm" @click="delUser(user_alias._id)"><span class="glyphicon glyphicon-trash">Delete</span></button>
-                        </router-link>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <router-link to="/adduser">
-            <button class="btn btn-large btn-block btn-success full-width">Add User</button>
-        </router-link>
-        <br> --> 
-
 
 
     <div class="modal fade bd-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -133,10 +98,11 @@ export default {
         Users: [],
         search: '',
         uid: ''
+        /* pics:'picture' */
     }
   },
   mounted () {
-      axios.get('http://localhost:5000/users')
+      axios.get('https://contact3142.herokuapp.com/users')
         .then((response)=>{
             console.log(response.data)
             this.Users = response.data
@@ -159,7 +125,7 @@ export default {
           this.uid = id
       },
       delUser(UserId){
-          axios.delete('http://localhost:5000/users/'+UserId)
+          axios.delete('https://contact3142.herokuapp.com/users/'+UserId)
         .then(()=>{
             console.log('Delete userId: '+UserId)
         })
