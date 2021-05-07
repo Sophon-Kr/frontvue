@@ -2,6 +2,9 @@
   "name": "contact3142",
   "version": "0.0.0",
   "description": "EGCO427-Assignment",
+  "engines": {
+    "node": "14.x"
+  },
  
   "scripts": {
     "dev": "vite",
